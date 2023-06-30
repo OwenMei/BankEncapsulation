@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             BankAccount account1 = new BankAccount("Todd");
-            Console.WriteLine($" Welcome, {account1._userName} What would you like to do today? Deposit(D) or Withdraw(W)");
+            Console.WriteLine($" Welcome, {account1.userName} What would you like to do today? Deposit(D) or Withdraw(W)");
 
             var choice = Console.ReadLine() ?? "D";
 
