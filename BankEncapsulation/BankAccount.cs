@@ -19,5 +19,10 @@ namespace BankEncapsulation
         {
             return _balance;
         }
+
+        public double withdraw(double amount)
+        {
+            return _balance -= amount;
+        }
     }
 }
