@@ -4,15 +4,18 @@
     {
         static void Main(string[] args)
         {
-            BankAccount account1 = new BankAccount("Todd");
-            Console.WriteLine($" Welcome, {account1.userName} What would you like to do today? Deposit(D) or Withdraw(W)");
+            Console.WriteLine("Hey, you must be new here! What's your name?");
+            var name = Console.ReadLine() ?? "";
+            BankAccount account1 = (name != "")? new BankAccount(name) : new BankAccount();
+            
+            Console.WriteLine($" Welcome, {account1.userName}, you have $100 in your bank account. What would you like to do today? Deposit(D) or Withdraw(W)");
 
             var choice = Console.ReadLine() ?? "D";
 
             if(choice.ToUpper() == "D") 
             {
                 Console.WriteLine("How much would you like to deposit?");
-                var depAmount = (int.TryParse(Console.ReadLine(), out int num)) ? num : 0;
+                var depAmount = (double.TryParse(Console.ReadLine(), out double num)) ? num : 0;
                 account1.deposit(depAmount);
                 Console.WriteLine($"you now have ${account1.getBalance()} in your bank account");
             }
@@ -20,7 +23,7 @@
             {
 
                 Console.WriteLine("How much would you like to withdraw?");
-                var witAmount = (int.TryParse(Console.ReadLine(), out int num)) ? num : 0;
+                var witAmount = (double.TryParse(Console.ReadLine(), out double num)) ? num : 0;
                 if(account1.getBalance() > witAmount)
                 {
                     account1.withdraw(witAmount);
