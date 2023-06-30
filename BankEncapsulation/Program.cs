@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-            BankAccount account1 = new BankAccount();
-            Console.WriteLine("What would you like to do today? Deposit(D) or Withdraw(W)");
+            BankAccount account1 = new BankAccount("Todd");
+            Console.WriteLine($" Welcome, {account1._userName} What would you like to do today? Deposit(D) or Withdraw(W)");
 
             var choice = Console.ReadLine() ?? "D";
 
@@ -18,11 +18,18 @@
             }
             else if(choice.ToUpper() == "W")
             {
+
                 Console.WriteLine("How much would you like to withdraw?");
-                
                 var witAmount = (int.TryParse(Console.ReadLine(), out int num)) ? num : 0;
-                account1.withdraw(witAmount);
-                Console.WriteLine($"you now have ${account1.getBalance()} in your bank account");
+                if(account1.getBalance() > witAmount)
+                {
+                    account1.withdraw(witAmount);
+                    Console.WriteLine($"you now have ${account1.getBalance()} in your bank account");
+                }
+                else
+                {
+                    Console.WriteLine("you do not have enough money in your bank account");
+                }
             }
         }
     }

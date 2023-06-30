@@ -8,7 +8,18 @@ namespace BankEncapsulation
 {
     public class BankAccount
     {
-        private double _balance = 0;
+        private double _balance = 100;
+        public string userName {get;}
+
+        public BankAccount()
+        {
+            userName = "guest";
+        }
+
+        public BankAccount(string name)
+        {
+            userName = name;
+        }
 
         public void deposit(double amount) 
         {
